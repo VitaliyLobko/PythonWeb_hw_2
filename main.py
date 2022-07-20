@@ -5,8 +5,6 @@ from datetime import date
 import pickle
 from pathlib import Path
 
-
-
 N = 3  # кількість записів для представлення телефонної книги
 
 
@@ -95,7 +93,14 @@ class Birthday(Field):
                     raise DateIsNotValid
 
 
-class Record:
+class RecordConsole(ABC):
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+
+class Record(RecordConsole):
     def __init__(self, name: Name, phones=[], birthday=None) -> None:
         self.name = name
         self.phone_list = phones

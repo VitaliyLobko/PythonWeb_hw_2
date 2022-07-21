@@ -8,7 +8,7 @@ from pathlib import Path
 N = 3  # кількість записів для представлення телефонної книги
 
 
-class Field(ABC):
+class Field():
     def __init__(self, value: str) -> None:
         self.__value = None
         self.value = value
@@ -17,12 +17,10 @@ class Field(ABC):
         return f'{self.value}'
 
     @property
-    @abstractmethod
     def value(self):
         pass
 
     @value.setter
-    @abstractmethod
     def value(self, value: str):
         pass
 
@@ -94,6 +92,13 @@ class Birthday(Field):
 
 
 class RecordConsole(ABC):
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+
+class RecordWeb(ABC):
 
     @abstractmethod
     def __str__(self):
